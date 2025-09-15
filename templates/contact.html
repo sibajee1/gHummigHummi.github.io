@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="contact">
+  <h2>Book your Trip</h2>
+  <p>Book wherever you want to travel in Odisha</p>
+
+  <form method="POST" action="{{ url_for('contact') }}">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="subject">Place</label>
+    <input type="text" id="subject" name="subject" placeholder="Where you want to go" required>
+
+    <label for="number">Phone Number</label>
+    <input type="number" id="number" name="number" placeholder="Enter Your Phone Number" required>
+
+    <label for="message">Details</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your requirement in 5 rows..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Popup Notification -->
+{% if popup_message %}
+<div id="popup" class="popup {{ popup_type }}">
+  {{ popup_message }}
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let popup = document.getElementById("popup");
+    if (popup) {
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.opacity = "0";
+        popup.style.transform = "translateX(100%)";
+        setTimeout(() => popup.remove(), 500);
+      }, 4000); // disappear after 4s
+    }
+  });
+</script>
+{% endif %}
+{% endblock %}

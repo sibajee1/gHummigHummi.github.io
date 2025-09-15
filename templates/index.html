@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="posts">
+  {% for post in posts %}
+    <div class="post-card">
+      {% if post.image %}
+        <div class="post-image">
+          <img src="{{ url_for('static', filename='uploads/' ~ post.image) }}" alt="{{ post.title }}">
+        </div>
+      {% endif %}
+
+      <div class="post-content">
+        <span class="post-category">{{ post.category or "Travel" }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <a href="{{ url_for('post_detail', post_id=loop.index0) }}" class="read-more">Read More →</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

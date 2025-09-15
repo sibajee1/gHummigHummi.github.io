@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="gallery">
+  {% for post in posts %}
+    {% if post.image %}
+      <img src="{{ url_for('static', filename='uploads/' ~ post.image) }}" alt="{{ post.title }}">
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

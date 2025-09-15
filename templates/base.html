@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>gHummi gHummi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span>gHummi gHummi</span>
+  </div>
+
+  <nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('gallery') }}">Gallery</a>
+    <a href="{{ url_for('about') }}">About Us</a>
+    <a href="{{ url_for('contact') }}">Book Your Trip</a>
+  </nav>
+
+  <div class="search">
+    <form action="{{ url_for('search') }}" method="get">
+      <input type="text" name="q" placeholder="Search..." value="{{ query if query else '' }}">
+    </form>
+  </div>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  <p>© 2025 gHummi gHummi | 
+    <a href="https://www.instagram.com/iamsibajee?igsh=bnE5Mmd6eXRoZ3h3">Instagram</a> |
+    <a href="https://youtube.com/@iamsibajee?si=qiTs9qX4j5V_7nyz">YouTube</a> |
+    <a href="https://www.facebook.com/share/16tD1etwdc/">Facebook</a>
+  </p>
+</footer>
+
+</body>
+</html>
